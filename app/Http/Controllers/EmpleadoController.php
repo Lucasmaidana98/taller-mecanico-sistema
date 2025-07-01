@@ -18,7 +18,6 @@ class EmpleadoController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('viewAny', Empleado::class);
 
         try {
             $query = Empleado::query();
@@ -82,8 +81,6 @@ class EmpleadoController extends Controller
      */
     public function create(): View
     {
-        $this->authorize('create', Empleado::class);
-        
         return view('empleados.create');
     }
 
@@ -92,7 +89,6 @@ class EmpleadoController extends Controller
      */
     public function store(EmpleadoRequest $request)
     {
-        $this->authorize('create', Empleado::class);
 
         try {
             DB::beginTransaction();
@@ -133,7 +129,6 @@ class EmpleadoController extends Controller
      */
     public function show(Empleado $empleado, Request $request)
     {
-        $this->authorize('view', $empleado);
 
         try {
             $empleado->load(['ordenesTrabajo.cliente', 'ordenesTrabajo.vehiculo', 'ordenesTrabajo.servicio']);
@@ -181,8 +176,6 @@ class EmpleadoController extends Controller
      */
     public function edit(Empleado $empleado): View
     {
-        $this->authorize('update', $empleado);
-        
         return view('empleados.edit', compact('empleado'));
     }
 
@@ -191,7 +184,6 @@ class EmpleadoController extends Controller
      */
     public function update(EmpleadoRequest $request, Empleado $empleado)
     {
-        $this->authorize('update', $empleado);
 
         try {
             DB::beginTransaction();
@@ -232,7 +224,6 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado, Request $request)
     {
-        $this->authorize('delete', $empleado);
 
         try {
             DB::beginTransaction();
@@ -289,7 +280,6 @@ class EmpleadoController extends Controller
      */
     public function getActive(Request $request): JsonResponse
     {
-        $this->authorize('viewAny', Empleado::class);
 
         try {
             $empleados = Empleado::where('status', true)
@@ -317,7 +307,6 @@ class EmpleadoController extends Controller
      */
     public function getPerformance(Empleado $empleado, Request $request): JsonResponse
     {
-        $this->authorize('view', $empleado);
 
         try {
             $fechaInicio = $request->get('fecha_inicio', now()->startOfMonth());

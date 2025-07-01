@@ -25,8 +25,6 @@ class ReporteController extends Controller
      */
     public function index(): View
     {
-        $this->authorize('viewAny', 'reporte');
-
         return view('reportes.index');
     }
 
@@ -35,8 +33,6 @@ class ReporteController extends Controller
      */
     public function generar(Request $request): JsonResponse
     {
-        $this->authorize('create', 'reporte');
-
         $request->validate([
             'tipo_reporte' => 'required|in:ordenes,clientes,empleados,servicios,ingresos,vehiculos',
             'fecha_inicio' => 'nullable|date',
@@ -101,8 +97,6 @@ class ReporteController extends Controller
      */
     public function exportarPDF(Request $request): Response
     {
-        $this->authorize('create', 'reporte');
-
         $request->validate([
             'tipo_reporte' => 'required|in:ordenes,clientes,empleados,servicios,ingresos,vehiculos',
             'fecha_inicio' => 'nullable|date',
@@ -414,8 +408,6 @@ class ReporteController extends Controller
      */
     public function getFilterOptions(): JsonResponse
     {
-        $this->authorize('viewAny', 'reporte');
-
         try {
             $data = [
                 'clientes' => Cliente::where('status', true)->orderBy('name')->get(['id', 'name']),

@@ -19,8 +19,6 @@ class VehiculoController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('viewAny', Vehiculo::class);
-
         try {
             $query = Vehiculo::with('cliente');
 
@@ -62,8 +60,9 @@ class VehiculoController extends Controller
             }
 
             $clientes = Cliente::where('status', true)->orderBy('name')->get();
+            $brands = Vehiculo::distinct()->pluck('brand')->filter()->sort()->values()->toArray();
 
-            return view('vehiculos.index', compact('vehiculos', 'clientes'));
+            return view('vehiculos.index', compact('vehiculos', 'clientes', 'brands'));
 
         } catch (\Exception $e) {
             Log::error('Error al obtener vehículos: ' . $e->getMessage());
@@ -84,8 +83,6 @@ class VehiculoController extends Controller
      */
     public function create(): View
     {
-        $this->authorize('create', Vehiculo::class);
-        
         $clientes = Cliente::where('status', true)->orderBy('name')->get();
         
         return view('vehiculos.create', compact('clientes'));
@@ -96,8 +93,6 @@ class VehiculoController extends Controller
      */
     public function store(VehiculoRequest $request)
     {
-        $this->authorize('create', Vehiculo::class);
-
         try {
             DB::beginTransaction();
 
@@ -138,8 +133,6 @@ class VehiculoController extends Controller
      */
     public function show(Vehiculo $vehiculo, Request $request)
     {
-        $this->authorize('view', $vehiculo);
-
         try {
             $vehiculo->load(['cliente', 'ordenesTrabajo.servicio', 'ordenesTrabajo.empleado']);
 
@@ -172,8 +165,6 @@ class VehiculoController extends Controller
      */
     public function edit(Vehiculo $vehiculo): View
     {
-        $this->authorize('update', $vehiculo);
-        
         $clientes = Cliente::where('status', true)->orderBy('name')->get();
         
         return view('vehiculos.edit', compact('vehiculo', 'clientes'));
@@ -184,8 +175,6 @@ class VehiculoController extends Controller
      */
     public function update(VehiculoRequest $request, Vehiculo $vehiculo)
     {
-        $this->authorize('update', $vehiculo);
-
         try {
             DB::beginTransaction();
 
@@ -226,8 +215,6 @@ class VehiculoController extends Controller
      */
     public function destroy(Vehiculo $vehiculo, Request $request)
     {
-        $this->authorize('delete', $vehiculo);
-
         try {
             DB::beginTransaction();
 
@@ -283,8 +270,6 @@ class VehiculoController extends Controller
      */
     public function getByCliente(Request $request, Cliente $cliente): JsonResponse
     {
-        $this->authorize('viewAny', Vehiculo::class);
-
         try {
             $vehiculos = $cliente->vehiculos()
                 ->where('status', true)

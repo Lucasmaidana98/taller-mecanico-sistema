@@ -63,7 +63,7 @@ Un sistema completo de gestión para talleres automotrices desarrollado en Larav
 
 1. **Clonar el repositorio**
 ```bash
-git clone https://github.com/tu-usuario/taller-sistema.git
+git clone https://github.com/Lucasmaidana98/taller-sistema.git
 cd taller-sistema
 ```
 
@@ -316,8 +316,8 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 Si necesitas ayuda o tienes preguntas:
 - 📧 Email: soporte@tallersistema.com
-- 🐛 Issues: [GitHub Issues](https://github.com/tu-usuario/taller-sistema/issues)
-- 📖 Documentación: [Wiki del proyecto](https://github.com/tu-usuario/taller-sistema/wiki)
+- 🐛 Issues: [GitHub Issues](https://github.com/Lucasmaidana98/taller-sistema/issues)
+- 📖 Documentación: [Wiki del proyecto](https://github.com/Lucasmaidana98/taller-sistema/wiki)
 
 ## 🔄 Changelog
 

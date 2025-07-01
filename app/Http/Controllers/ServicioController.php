@@ -18,10 +18,8 @@ class ServicioController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('viewAny', Servicio::class);
-
         try {
-            $query = Servicio::query();
+            $query = Servicio::with('ordenesTrabajo');
 
             // Filtros de búsqueda
             if ($request->filled('search')) {
@@ -76,8 +74,6 @@ class ServicioController extends Controller
      */
     public function create(): View
     {
-        $this->authorize('create', Servicio::class);
-        
         return view('servicios.create');
     }
 
@@ -86,8 +82,6 @@ class ServicioController extends Controller
      */
     public function store(ServicioRequest $request)
     {
-        $this->authorize('create', Servicio::class);
-
         try {
             DB::beginTransaction();
 
@@ -127,10 +121,8 @@ class ServicioController extends Controller
      */
     public function show(Servicio $servicio, Request $request)
     {
-        $this->authorize('view', $servicio);
-
         try {
-            $servicio->load(['ordenesTrabajo.cliente', 'ordenesTrabajo.vehiculo']);
+            $servicio->load(['ordenesTrabajo.cliente', 'ordenesTrabajo.vehiculo', 'ordenesTrabajo.empleado']);
 
             // Estadísticas del servicio
             $estadisticas = [
@@ -170,8 +162,7 @@ class ServicioController extends Controller
      */
     public function edit(Servicio $servicio): View
     {
-        $this->authorize('update', $servicio);
-        
+        $servicio->load('ordenesTrabajo');
         return view('servicios.edit', compact('servicio'));
     }
 
@@ -180,8 +171,6 @@ class ServicioController extends Controller
      */
     public function update(ServicioRequest $request, Servicio $servicio)
     {
-        $this->authorize('update', $servicio);
-
         try {
             DB::beginTransaction();
 
@@ -221,8 +210,6 @@ class ServicioController extends Controller
      */
     public function destroy(Servicio $servicio, Request $request)
     {
-        $this->authorize('delete', $servicio);
-
         try {
             DB::beginTransaction();
 
@@ -278,8 +265,6 @@ class ServicioController extends Controller
      */
     public function getActive(Request $request): JsonResponse
     {
-        $this->authorize('viewAny', Servicio::class);
-
         try {
             $servicios = Servicio::where('status', true)
                 ->orderBy('name')

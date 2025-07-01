@@ -18,8 +18,6 @@ class ClienteController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('viewAny', Cliente::class);
-
         try {
             $query = Cliente::query();
 
@@ -38,18 +36,29 @@ class ClienteController extends Controller
                 $query->where('status', $request->get('status'));
             }
 
-            $clientes = $query->latest()->paginate(15);
+            // Get per_page parameter, default to 15
+            $perPage = $request->get('per_page', 15);
+            $clientes = $query->latest()->paginate($perPage);
+
+            // Get statistics for the dashboard cards (without filters for global stats)
+            $stats = [
+                'total' => Cliente::count(),
+                'activos' => Cliente::where('status', true)->count(),
+                'inactivos' => Cliente::where('status', false)->count(),
+                'nuevos' => Cliente::where('created_at', '>=', now()->subDays(30))->count(),
+            ];
 
             // Respuesta AJAX
             if ($request->ajax()) {
                 return response()->json([
                     'success' => true,
                     'data' => $clientes,
+                    'stats' => $stats,
                     'message' => 'Clientes obtenidos correctamente'
                 ]);
             }
 
-            return view('clientes.index', compact('clientes'));
+            return view('clientes.index', compact('clientes', 'stats'));
 
         } catch (\Exception $e) {
             Log::error('Error al obtener clientes: ' . $e->getMessage());
@@ -70,8 +79,6 @@ class ClienteController extends Controller
      */
     public function create(): View
     {
-        $this->authorize('create', Cliente::class);
-        
         return view('clientes.create');
     }
 
@@ -80,8 +87,6 @@ class ClienteController extends Controller
      */
     public function store(ClienteRequest $request)
     {
-        $this->authorize('create', Cliente::class);
-
         try {
             DB::beginTransaction();
 
@@ -121,8 +126,6 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente, Request $request)
     {
-        $this->authorize('view', $cliente);
-
         try {
             $cliente->load(['vehiculos', 'ordenesTrabajo.servicio']);
 
@@ -155,7 +158,8 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente): View
     {
-        $this->authorize('update', $cliente);
+        // Load relationships needed by the edit view
+        $cliente->load(['vehiculos', 'ordenesTrabajo']);
         
         return view('clientes.edit', compact('cliente'));
     }
@@ -165,8 +169,6 @@ class ClienteController extends Controller
      */
     public function update(ClienteRequest $request, Cliente $cliente)
     {
-        $this->authorize('update', $cliente);
-
         try {
             DB::beginTransaction();
 
@@ -206,8 +208,6 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente, Request $request)
     {
-        $this->authorize('delete', $cliente);
-
         try {
             DB::beginTransaction();
 

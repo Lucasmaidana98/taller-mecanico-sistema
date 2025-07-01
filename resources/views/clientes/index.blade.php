@@ -62,7 +62,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Total Clientes</h5>
-                        <h3 class="mb-0">{{ $clientes->total() }}</h3>
+                        <h3 class="mb-0">{{ $stats['total'] }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-users fa-2x opacity-75"></i>
@@ -77,7 +77,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Activos</h5>
-                        <h3 class="mb-0">{{ $clientes->where('status', true)->count() }}</h3>
+                        <h3 class="mb-0">{{ $stats['activos'] }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-user-check fa-2x opacity-75"></i>
@@ -92,7 +92,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Inactivos</h5>
-                        <h3 class="mb-0">{{ $clientes->where('status', false)->count() }}</h3>
+                        <h3 class="mb-0">{{ $stats['inactivos'] }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-user-times fa-2x opacity-75"></i>
@@ -107,7 +107,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Nuevos (30 días)</h5>
-                        <h3 class="mb-0">{{ $clientes->where('created_at', '>=', now()->subDays(30))->count() }}</h3>
+                        <h3 class="mb-0">{{ $stats['nuevos'] }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-user-plus fa-2x opacity-75"></i>

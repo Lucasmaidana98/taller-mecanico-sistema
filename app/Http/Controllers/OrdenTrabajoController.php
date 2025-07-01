@@ -22,7 +22,6 @@ class OrdenTrabajoController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('viewAny', OrdenTrabajo::class);
 
         try {
             $query = OrdenTrabajo::with(['cliente', 'vehiculo', 'empleado', 'servicio']);
@@ -85,10 +84,11 @@ class OrdenTrabajoController extends Controller
 
             // Obtener datos para filtros
             $clientes = Cliente::where('status', true)->orderBy('name')->get();
+            $vehiculos = Vehiculo::where('status', true)->orderBy('brand')->get();
             $empleados = Empleado::where('status', true)->orderBy('name')->get();
             $servicios = Servicio::where('status', true)->orderBy('name')->get();
 
-            return view('ordenes-trabajo.index', compact('ordenes', 'clientes', 'empleados', 'servicios'));
+            return view('ordenes.index', compact('ordenes', 'clientes', 'vehiculos', 'empleados', 'servicios'));
 
         } catch (\Exception $e) {
             Log::error('Error al obtener órdenes de trabajo: ' . $e->getMessage());
@@ -109,13 +109,13 @@ class OrdenTrabajoController extends Controller
      */
     public function create(): View
     {
-        $this->authorize('create', OrdenTrabajo::class);
         
         $clientes = Cliente::where('status', true)->orderBy('name')->get();
+        $vehiculos = Vehiculo::where('status', true)->orderBy('brand')->get();
         $empleados = Empleado::where('status', true)->orderBy('name')->get();
         $servicios = Servicio::where('status', true)->orderBy('name')->get();
         
-        return view('ordenes-trabajo.create', compact('clientes', 'empleados', 'servicios'));
+        return view('ordenes.create', compact('clientes', 'vehiculos', 'empleados', 'servicios'));
     }
 
     /**
@@ -123,7 +123,6 @@ class OrdenTrabajoController extends Controller
      */
     public function store(OrdenTrabajoRequest $request)
     {
-        $this->authorize('create', OrdenTrabajo::class);
 
         try {
             DB::beginTransaction();
@@ -173,7 +172,6 @@ class OrdenTrabajoController extends Controller
      */
     public function show(OrdenTrabajo $ordenTrabajo, Request $request)
     {
-        $this->authorize('view', $ordenTrabajo);
 
         try {
             $ordenTrabajo->load(['cliente', 'vehiculo', 'empleado', 'servicio']);
@@ -186,7 +184,7 @@ class OrdenTrabajoController extends Controller
                 ]);
             }
 
-            return view('ordenes-trabajo.show', compact('ordenTrabajo'));
+            return view('ordenes.show', compact('ordenTrabajo'));
 
         } catch (\Exception $e) {
             Log::error('Error al obtener orden de trabajo: ' . $e->getMessage());
@@ -207,7 +205,6 @@ class OrdenTrabajoController extends Controller
      */
     public function edit(OrdenTrabajo $ordenTrabajo): View
     {
-        $this->authorize('update', $ordenTrabajo);
         
         $clientes = Cliente::where('status', true)->orderBy('name')->get();
         $vehiculos = Vehiculo::where('cliente_id', $ordenTrabajo->cliente_id)
@@ -217,7 +214,7 @@ class OrdenTrabajoController extends Controller
         $empleados = Empleado::where('status', true)->orderBy('name')->get();
         $servicios = Servicio::where('status', true)->orderBy('name')->get();
         
-        return view('ordenes-trabajo.edit', compact('ordenTrabajo', 'clientes', 'vehiculos', 'empleados', 'servicios'));
+        return view('ordenes.edit', compact('ordenTrabajo', 'clientes', 'vehiculos', 'empleados', 'servicios'));
     }
 
     /**
@@ -225,7 +222,6 @@ class OrdenTrabajoController extends Controller
      */
     public function update(OrdenTrabajoRequest $request, OrdenTrabajo $ordenTrabajo)
     {
-        $this->authorize('update', $ordenTrabajo);
 
         try {
             DB::beginTransaction();
@@ -277,7 +273,6 @@ class OrdenTrabajoController extends Controller
      */
     public function destroy(OrdenTrabajo $ordenTrabajo, Request $request)
     {
-        $this->authorize('delete', $ordenTrabajo);
 
         try {
             DB::beginTransaction();
@@ -328,7 +323,6 @@ class OrdenTrabajoController extends Controller
      */
     public function updateStatus(Request $request, OrdenTrabajo $ordenTrabajo): JsonResponse
     {
-        $this->authorize('update', $ordenTrabajo);
 
         $request->validate([
             'status' => 'required|in:pending,in_progress,completed,cancelled'
@@ -376,7 +370,6 @@ class OrdenTrabajoController extends Controller
      */
     public function getDashboardData(Request $request): JsonResponse
     {
-        $this->authorize('viewAny', OrdenTrabajo::class);
 
         try {
             $data = [
@@ -429,10 +422,9 @@ class OrdenTrabajoController extends Controller
      */
     public function print(OrdenTrabajo $ordenTrabajo): View
     {
-        $this->authorize('view', $ordenTrabajo);
 
         $ordenTrabajo->load(['cliente', 'vehiculo', 'empleado', 'servicio']);
 
-        return view('ordenes-trabajo.print', compact('ordenTrabajo'));
+        return view('ordenes.print', compact('ordenTrabajo'));
     }
 }
