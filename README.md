@@ -7,6 +7,23 @@ Sistema web completo para la administración de talleres mecánicos desarrollado
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple.svg)](https://getbootstrap.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+## 🎥 Demostración en Video
+
+> **📹 Video disponible**: `sistemarepuestoslaravel.mp4` (188MB)
+> 
+> *Debido al tamaño del archivo, el video no está incluido en el repositorio. Puedes encontrarlo en la carpeta original del proyecto o solicitar acceso al desarrollador.*
+
+### 📹 **Lo que verás en el video de demostración:**
+- ✅ **Dashboard interactivo** con estadísticas en tiempo real
+- ✅ **Gestión completa** de clientes, vehículos y servicios  
+- ✅ **Sistema de roles y permisos** en acción
+- ✅ **Operaciones CRUD** con validaciones avanzadas
+- ✅ **Interfaz responsive** y moderna con Bootstrap 5
+- ✅ **Eliminación segura** con confirmaciones SweetAlert2
+- ✅ **Generación de reportes** en PDF
+- ✅ **Autenticación y navegación** entre módulos
+- ✅ **Validaciones en tiempo real** y manejo de errores
+
 ## 🎯 Características Principales
 
 ### 📊 **Dashboard Interactivo**
