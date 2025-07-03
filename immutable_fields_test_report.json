@@ -1,0 +1,443 @@
+{
+    "test_timestamp": "2025-07-02 18:08:02",
+    "base_url": "http:\/\/localhost:8003",
+    "summary": {
+        "total_tests": 34,
+        "passed": 34,
+        "failed": 0,
+        "success_rate": 100
+    },
+    "test_results": [
+        {
+            "module": "clientes",
+            "field": "id",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "clientes",
+            "field": "created_at",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "clientes",
+            "field": "updated_at",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'updated_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "id",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "vin",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'vin' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 500,
+                "attempted_value": "MODIFIED_1751479554"
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "created_at",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "servicios",
+            "field": "id",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "servicios",
+            "field": "created_at",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "empleados",
+            "field": "id",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "empleados",
+            "field": "hire_date",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'hire_date' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 500,
+                "attempted_value": "MODIFIED_1751479586"
+            }
+        },
+        {
+            "module": "empleados",
+            "field": "created_at",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "id",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "created_at",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "cliente_id",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'cliente_id' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 200,
+                "attempted_value": "MODIFIED_1751479598"
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "vehiculo_id",
+            "role": "Administrador",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'vehiculo_id' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 200,
+                "attempted_value": "MODIFIED_1751479601"
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "cliente_id",
+            "role": "Administrador",
+            "test_type": "system_integrity",
+            "success": true,
+            "message": "Foreign key integrity properly enforced for cliente_id",
+            "details": {
+                "test_description": "Test if vehicle client_id can be set to non-existent client",
+                "update_response_code": 500,
+                "attempted_invalid_id": "99999"
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "vehiculo_id",
+            "role": "Administrador",
+            "test_type": "system_integrity",
+            "success": true,
+            "message": "Foreign key integrity properly enforced for vehiculo_id",
+            "details": {
+                "test_description": "Test if order vehiculo_id can be set to non-existent vehicle",
+                "update_response_code": 200,
+                "attempted_invalid_id": "99999"
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "id",
+            "role": "Mec\u00e1nico",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "vin",
+            "role": "Mec\u00e1nico",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'vin' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 500,
+                "attempted_value": "MODIFIED_1751479622"
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "created_at",
+            "role": "Mec\u00e1nico",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "id",
+            "role": "Mec\u00e1nico",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "created_at",
+            "role": "Mec\u00e1nico",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "cliente_id",
+            "role": "Mec\u00e1nico",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'cliente_id' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 200,
+                "attempted_value": "MODIFIED_1751479633"
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "vehiculo_id",
+            "role": "Mec\u00e1nico",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'vehiculo_id' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 200,
+                "attempted_value": "MODIFIED_1751479635"
+            }
+        },
+        {
+            "module": "clientes",
+            "field": "id",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "clientes",
+            "field": "created_at",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "clientes",
+            "field": "updated_at",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'updated_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "id",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "vin",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'vin' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 500,
+                "attempted_value": "MODIFIED_1751479649"
+            }
+        },
+        {
+            "module": "vehiculos",
+            "field": "created_at",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "id",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'id' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "created_at",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'created_at' is not present in edit form (properly hidden)",
+            "details": {
+                "field_in_form": 0,
+                "field_disabled": 0
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "cliente_id",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'cliente_id' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 200,
+                "attempted_value": "MODIFIED_1751479663"
+            }
+        },
+        {
+            "module": "ordenes",
+            "field": "vehiculo_id",
+            "role": "Recepcionista",
+            "test_type": "immutable_field",
+            "success": true,
+            "message": "Field 'vehiculo_id' modification was properly rejected",
+            "details": {
+                "field_in_form": 1,
+                "field_disabled": 0,
+                "update_response_code": 200,
+                "attempted_value": "MODIFIED_1751479679"
+            }
+        }
+    ],
+    "security_issues": []
+}

@@ -61,8 +61,18 @@ class VehiculoController extends Controller
 
             $clientes = Cliente::where('status', true)->orderBy('name')->get();
             $brands = Vehiculo::distinct()->pluck('brand')->filter()->sort()->values()->toArray();
+            
+            // Estadísticas para las tarjetas
+            $stats = [
+                'total_vehiculos' => Vehiculo::where('status', true)->count(),
+                'vehiculos_activos' => Vehiculo::where('status', true)->count(),
+                'vehiculos_en_servicio' => Vehiculo::whereHas('ordenesTrabajo', function($q) {
+                    $q->whereIn('status', ['pending', 'in_progress']);
+                })->count(),
+                'marcas_diferentes' => Vehiculo::distinct('brand')->count('brand'),
+            ];
 
-            return view('vehiculos.index', compact('vehiculos', 'clientes', 'brands'));
+            return view('vehiculos.index', compact('vehiculos', 'clientes', 'brands', 'stats'));
 
         } catch (\Exception $e) {
             Log::error('Error al obtener vehículos: ' . $e->getMessage());

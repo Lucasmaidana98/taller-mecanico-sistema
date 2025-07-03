@@ -377,13 +377,13 @@ const serviciosChart = new Chart(serviciosCtx, {
 function exportToPDF() {
     const params = new URLSearchParams(window.location.search);
     params.set('format', 'pdf');
-    window.open('{{ route("reportes.export") }}?' + params.toString(), '_blank');
+    window.open('{{ route("reportes.exportar") }}?' + params.toString(), '_blank');
 }
 
 function exportToExcel() {
     const params = new URLSearchParams(window.location.search);
     params.set('format', 'excel');
-    window.open('{{ route("reportes.export") }}?' + params.toString(), '_blank');
+    window.open('{{ route("reportes.exportar") }}?' + params.toString(), '_blank');
 }
 </script>
 @endpush

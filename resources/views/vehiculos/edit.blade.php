@@ -196,12 +196,12 @@
                 <div class="row text-center">
                     <div class="col-6">
                         <div class="border-end pe-3">
-                            <h4 class="text-primary mb-1">{{ $vehiculo->ordenTrabajos->count() }}</h4>
+                            <h4 class="text-primary mb-1">{{ $vehiculo->ordenesTrabajo ? $vehiculo->ordenesTrabajo->count() : 0 }}</h4>
                             <small class="text-muted">Órdenes Totales</small>
                         </div>
                     </div>
                     <div class="col-6">
-                        <h4 class="text-success mb-1">{{ $vehiculo->ordenTrabajos->where('status', 'completed')->count() }}</h4>
+                        <h4 class="text-success mb-1">{{ $vehiculo->ordenesTrabajo ? $vehiculo->ordenesTrabajo->where('status', 'completed')->count() : 0 }}</h4>
                         <small class="text-muted">Completadas</small>
                     </div>
                 </div>
@@ -248,7 +248,7 @@
         </div>
         
         <!-- Órdenes recientes -->
-        @if($vehiculo->ordenTrabajos->count() > 0)
+        @if($vehiculo->ordenesTrabajo && $vehiculo->ordenesTrabajo->count() > 0)
         <div class="card mt-4">
             <div class="card-header">
                 <h5 class="card-title mb-0">
@@ -257,7 +257,7 @@
                 </h5>
             </div>
             <div class="card-body">
-                @foreach($vehiculo->ordenTrabajos->take(3) as $orden)
+                @foreach($vehiculo->ordenesTrabajo->take(3) as $orden)
                 <div class="d-flex justify-content-between align-items-center {{ !$loop->last ? 'mb-2 pb-2 border-bottom' : '' }}">
                     <div>
                         <strong>Orden #{{ $orden->id }}</strong>

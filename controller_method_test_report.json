@@ -1,0 +1,217 @@
+{
+    "controller_responses": [
+        {
+            "test": "DashboardController index",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "has_dashboard_content": false,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:03:42"
+        },
+        {
+            "test": "clientesController index",
+            "passed": false,
+            "details": {
+                "http_code": 500,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:03:51"
+        },
+        {
+            "test": "clientesController create",
+            "passed": false,
+            "details": {
+                "http_code": 500,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:04:00"
+        },
+        {
+            "test": "vehiculosController index",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:04:02"
+        },
+        {
+            "test": "vehiculosController create",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:04:02"
+        },
+        {
+            "test": "serviciosController index",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:04:04"
+        },
+        {
+            "test": "serviciosController create",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:04:05"
+        },
+        {
+            "test": "empleadosController index",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:04:05"
+        },
+        {
+            "test": "empleadosController create",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:04:07"
+        },
+        {
+            "test": "ordenesController index",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:04:08"
+        },
+        {
+            "test": "ordenesController create",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "content_type": "text\/html; charset=UTF-8"
+            },
+            "timestamp": "2025-07-02 14:04:08"
+        }
+    ],
+    "json_api_tests": [
+        {
+            "test": "Clientes AJAX response",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "is_json": true,
+                "content_type": "application\/json"
+            },
+            "timestamp": "2025-07-02 14:04:13"
+        },
+        {
+            "test": "Clientes show AJAX response",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "content_type": "application\/json"
+            },
+            "timestamp": "2025-07-02 14:04:13"
+        }
+    ],
+    "validation_tests": [
+        {
+            "test": "Cliente validation with invalid data",
+            "passed": false,
+            "details": {
+                "http_code": 200,
+                "expected_validation_error": true
+            },
+            "timestamp": "2025-07-02 14:04:15"
+        },
+        {
+            "test": "Cliente creation with valid data",
+            "passed": false,
+            "details": {
+                "http_code": 500,
+                "expected_success": true
+            },
+            "timestamp": "2025-07-02 14:04:24"
+        }
+    ],
+    "business_logic_tests": [
+        {
+            "test": "Search functionality",
+            "passed": false,
+            "details": {
+                "http_code": 500,
+                "has_search_parameter": true
+            },
+            "timestamp": "2025-07-02 14:04:41"
+        },
+        {
+            "test": "Pagination functionality",
+            "passed": false,
+            "details": {
+                "http_code": 500,
+                "has_pagination_parameters": true
+            },
+            "timestamp": "2025-07-02 14:04:51"
+        },
+        {
+            "test": "Status filtering",
+            "passed": false,
+            "details": {
+                "http_code": 500,
+                "has_status_filter": true
+            },
+            "timestamp": "2025-07-02 14:05:00"
+        }
+    ],
+    "error_handling_tests": [
+        {
+            "test": "404 error handling",
+            "passed": true,
+            "details": {
+                "http_code": 404,
+                "resource_not_found": true
+            },
+            "timestamp": "2025-07-02 14:05:09"
+        },
+        {
+            "test": "Method not allowed handling",
+            "passed": true,
+            "details": {
+                "http_code": 419,
+                "method_not_allowed_test": true
+            },
+            "timestamp": "2025-07-02 14:05:10"
+        },
+        {
+            "test": "CSRF protection",
+            "passed": true,
+            "details": {
+                "http_code": 419,
+                "csrf_protection_test": true
+            },
+            "timestamp": "2025-07-02 14:05:10"
+        }
+    ],
+    "summary": {
+        "total_tests": 21,
+        "passed": 14,
+        "failed": 7,
+        "errors": [
+            "clientesController index: {\"http_code\":500,\"content_type\":\"text\\\/html; charset=UTF-8\"}",
+            "clientesController create: {\"http_code\":500,\"content_type\":\"text\\\/html; charset=UTF-8\"}",
+            "Cliente validation with invalid data: {\"http_code\":200,\"expected_validation_error\":true}",
+            "Cliente creation with valid data: {\"http_code\":500,\"expected_success\":true}",
+            "Search functionality: {\"http_code\":500,\"has_search_parameter\":true}",
+            "Pagination functionality: {\"http_code\":500,\"has_pagination_parameters\":true}",
+            "Status filtering: {\"http_code\":500,\"has_status_filter\":true}"
+        ]
+    }
+}

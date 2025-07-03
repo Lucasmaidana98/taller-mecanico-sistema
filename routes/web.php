@@ -14,6 +14,11 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
+// Test route
+Route::get('/test', function() {
+    return 'Test route working!';
+});
+
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])
@@ -37,12 +42,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('servicios', ServicioController::class)
         ->middleware('permission:ver-servicios');
 
-    // Empleados
+    // Empleados (solo para admin)
     Route::resource('empleados', EmpleadoController::class)
         ->middleware('permission:ver-empleados');
 
     // Ordenes de Trabajo
     Route::resource('ordenes', OrdenTrabajoController::class)
+        ->parameters(['ordenes' => 'ordenTrabajo'])
         ->middleware('permission:ver-ordenes');
 
     // Reportes

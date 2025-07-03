@@ -227,9 +227,26 @@ class ClienteController extends Controller
                 return back()->with('error', 'No se puede eliminar el cliente porque tiene órdenes de trabajo activas');
             }
 
-            // Soft delete o hard delete según la lógica de negocio
-            $cliente->update(['status' => false]);
-            // O usar: $cliente->delete(); para hard delete
+            // Verificar y eliminar relaciones dependientes si es necesario
+            $vehiculosCount = $cliente->vehiculos()->count();
+            $ordenesCompletasCount = $cliente->ordenesTrabajo()
+                ->whereIn('status', ['completed', 'cancelled'])
+                ->count();
+            
+            if ($vehiculosCount > 0) {
+                // Desasociar vehículos o eliminarlos según la lógica de negocio
+                $cliente->vehiculos()->update(['cliente_id' => null]);
+            }
+            
+            if ($ordenesCompletasCount > 0) {
+                // Mantener historial de órdenes completadas con referencia nula
+                $cliente->ordenesTrabajo()
+                    ->whereIn('status', ['completed', 'cancelled'])
+                    ->update(['cliente_id' => null]);
+            }
+            
+            // Hard delete - eliminar completamente el registro
+            $cliente->delete();
 
             DB::commit();
 

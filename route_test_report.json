@@ -1,0 +1,456 @@
+{
+    "authentication": [
+        {
+            "test": "GET \/login",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "has_login_form": true
+            },
+            "timestamp": "2025-07-02 14:00:32"
+        },
+        {
+            "test": "GET \/register",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "has_register_form": true
+            },
+            "timestamp": "2025-07-02 14:00:34"
+        },
+        {
+            "test": "GET \/forgot-password",
+            "passed": true,
+            "details": {
+                "http_code": 200
+            },
+            "timestamp": "2025-07-02 14:00:34"
+        },
+        {
+            "test": "POST \/login (invalid credentials)",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "expected_codes": [
+                    200,
+                    302,
+                    422
+                ]
+            },
+            "timestamp": "2025-07-02 14:00:36"
+        },
+        {
+            "test": "POST \/register",
+            "passed": false,
+            "details": {
+                "http_code": 403,
+                "expected_codes": [
+                    200,
+                    201,
+                    302
+                ]
+            },
+            "timestamp": "2025-07-02 14:00:37"
+        }
+    ],
+    "main_modules": [
+        {
+            "test": "clientes index",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "url": "http:\/\/localhost:8002\/clientes"
+            },
+            "timestamp": "2025-07-02 14:00:37"
+        },
+        {
+            "test": "clientes create",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "url": "http:\/\/localhost:8002\/clientes\/create"
+            },
+            "timestamp": "2025-07-02 14:00:37"
+        },
+        {
+            "test": "clientes show",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "url": "http:\/\/localhost:8002\/clientes\/1"
+            },
+            "timestamp": "2025-07-02 14:00:38"
+        },
+        {
+            "test": "clientes edit",
+            "passed": true,
+            "details": {
+                "http_code": 200,
+                "url": "http:\/\/localhost:8002\/clientes\/1\/edit"
+            },
+            "timestamp": "2025-07-02 14:00:39"
+        },
+        {
+            "test": "vehiculos index",
+            "passed": false,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/vehiculos"
+            },
+            "timestamp": "2025-07-02 14:00:39"
+        },
+        {
+            "test": "vehiculos create",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/vehiculos\/create"
+            },
+            "timestamp": "2025-07-02 14:00:39"
+        },
+        {
+            "test": "vehiculos show",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/vehiculos\/1"
+            },
+            "timestamp": "2025-07-02 14:00:39"
+        },
+        {
+            "test": "vehiculos edit",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/vehiculos\/1\/edit"
+            },
+            "timestamp": "2025-07-02 14:00:39"
+        },
+        {
+            "test": "servicios index",
+            "passed": false,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/servicios"
+            },
+            "timestamp": "2025-07-02 14:00:40"
+        },
+        {
+            "test": "servicios create",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/servicios\/create"
+            },
+            "timestamp": "2025-07-02 14:00:40"
+        },
+        {
+            "test": "servicios show",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/servicios\/1"
+            },
+            "timestamp": "2025-07-02 14:00:40"
+        },
+        {
+            "test": "servicios edit",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/servicios\/1\/edit"
+            },
+            "timestamp": "2025-07-02 14:00:40"
+        },
+        {
+            "test": "empleados index",
+            "passed": false,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/empleados"
+            },
+            "timestamp": "2025-07-02 14:00:40"
+        },
+        {
+            "test": "empleados create",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/empleados\/create"
+            },
+            "timestamp": "2025-07-02 14:00:40"
+        },
+        {
+            "test": "empleados show",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/empleados\/1"
+            },
+            "timestamp": "2025-07-02 14:00:40"
+        },
+        {
+            "test": "empleados edit",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/empleados\/1\/edit"
+            },
+            "timestamp": "2025-07-02 14:00:41"
+        },
+        {
+            "test": "ordenes index",
+            "passed": false,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/ordenes"
+            },
+            "timestamp": "2025-07-02 14:00:46"
+        },
+        {
+            "test": "ordenes create",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/ordenes\/create"
+            },
+            "timestamp": "2025-07-02 14:00:47"
+        },
+        {
+            "test": "ordenes show",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/ordenes\/1"
+            },
+            "timestamp": "2025-07-02 14:00:47"
+        },
+        {
+            "test": "ordenes edit",
+            "passed": true,
+            "details": {
+                "http_code": 403,
+                "url": "http:\/\/localhost:8002\/ordenes\/1\/edit"
+            },
+            "timestamp": "2025-07-02 14:00:47"
+        }
+    ],
+    "dashboard_profile": [
+        {
+            "test": "dashboard",
+            "passed": true,
+            "details": {
+                "http_code": 403
+            },
+            "timestamp": "2025-07-02 14:00:48"
+        },
+        {
+            "test": "profile edit",
+            "passed": true,
+            "details": {
+                "http_code": 200
+            },
+            "timestamp": "2025-07-02 14:00:48"
+        }
+    ],
+    "reportes": [
+        {
+            "test": "reportes index",
+            "passed": true,
+            "details": {
+                "http_code": 403
+            },
+            "timestamp": "2025-07-02 14:00:48"
+        },
+        {
+            "test": "reportes generar",
+            "passed": true,
+            "details": {
+                "http_code": 403
+            },
+            "timestamp": "2025-07-02 14:00:49"
+        },
+        {
+            "test": "reportes exportar",
+            "passed": true,
+            "details": {
+                "http_code": 403
+            },
+            "timestamp": "2025-07-02 14:00:50"
+        }
+    ],
+    "error_handling": [
+        {
+            "test": "404 for non-existent route",
+            "passed": true,
+            "details": {
+                "http_code": 404
+            },
+            "timestamp": "2025-07-02 14:00:50"
+        },
+        {
+            "test": "Method not allowed",
+            "passed": true,
+            "details": {
+                "http_code": 405
+            },
+            "timestamp": "2025-07-02 14:01:11"
+        },
+        {
+            "test": "Middleware protection for \/dashboard",
+            "passed": false,
+            "details": {
+                "http_code": 200,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 14:01:16"
+        },
+        {
+            "test": "Middleware protection for \/profile",
+            "passed": false,
+            "details": {
+                "http_code": 200,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 14:01:17"
+        },
+        {
+            "test": "Middleware protection for \/vehiculos",
+            "passed": false,
+            "details": {
+                "http_code": 200,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 14:01:23"
+        },
+        {
+            "test": "Middleware protection for \/servicios",
+            "passed": false,
+            "details": {
+                "http_code": 200,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 14:01:23"
+        },
+        {
+            "test": "Middleware protection for \/empleados",
+            "passed": false,
+            "details": {
+                "http_code": 200,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 14:01:24"
+        },
+        {
+            "test": "Middleware protection for \/ordenes",
+            "passed": false,
+            "details": {
+                "http_code": 200,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 14:01:25"
+        },
+        {
+            "test": "Middleware protection for \/reportes",
+            "passed": false,
+            "details": {
+                "http_code": 200,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 14:01:26"
+        }
+    ],
+    "route_parameters": [
+        {
+            "test": "clientes invalid ID",
+            "passed": true,
+            "details": {
+                "http_code": 404,
+                "url": "http:\/\/localhost:8002\/clientes\/invalid-id"
+            },
+            "timestamp": "2025-07-02 14:01:14"
+        },
+        {
+            "test": "clientes large ID",
+            "passed": true,
+            "details": {
+                "http_code": 404,
+                "url": "http:\/\/localhost:8002\/clientes\/999999"
+            },
+            "timestamp": "2025-07-02 14:01:15"
+        },
+        {
+            "test": "vehiculos invalid ID",
+            "passed": true,
+            "details": {
+                "http_code": 404,
+                "url": "http:\/\/localhost:8002\/vehiculos\/invalid-id"
+            },
+            "timestamp": "2025-07-02 14:01:15"
+        },
+        {
+            "test": "vehiculos large ID",
+            "passed": true,
+            "details": {
+                "http_code": 404,
+                "url": "http:\/\/localhost:8002\/vehiculos\/999999"
+            },
+            "timestamp": "2025-07-02 14:01:15"
+        },
+        {
+            "test": "servicios invalid ID",
+            "passed": true,
+            "details": {
+                "http_code": 404,
+                "url": "http:\/\/localhost:8002\/servicios\/invalid-id"
+            },
+            "timestamp": "2025-07-02 14:01:15"
+        },
+        {
+            "test": "servicios large ID",
+            "passed": true,
+            "details": {
+                "http_code": 404,
+                "url": "http:\/\/localhost:8002\/servicios\/999999"
+            },
+            "timestamp": "2025-07-02 14:01:15"
+        },
+        {
+            "test": "empleados invalid ID",
+            "passed": true,
+            "details": {
+                "http_code": 404,
+                "url": "http:\/\/localhost:8002\/empleados\/invalid-id"
+            },
+            "timestamp": "2025-07-02 14:01:16"
+        },
+        {
+            "test": "empleados large ID",
+            "passed": true,
+            "details": {
+                "http_code": 404,
+                "url": "http:\/\/localhost:8002\/empleados\/999999"
+            },
+            "timestamp": "2025-07-02 14:01:16"
+        }
+    ],
+    "summary": {
+        "total_tests": 47,
+        "passed": 35,
+        "failed": 12,
+        "errors": [
+            "POST \/register: {\"http_code\":403,\"expected_codes\":[200,201,302]}",
+            "vehiculos index: {\"http_code\":403,\"url\":\"http:\\\/\\\/localhost:8002\\\/vehiculos\"}",
+            "servicios index: {\"http_code\":403,\"url\":\"http:\\\/\\\/localhost:8002\\\/servicios\"}",
+            "empleados index: {\"http_code\":403,\"url\":\"http:\\\/\\\/localhost:8002\\\/empleados\"}",
+            "ordenes index: {\"http_code\":403,\"url\":\"http:\\\/\\\/localhost:8002\\\/ordenes\"}",
+            "Middleware protection for \/dashboard: {\"http_code\":200,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/profile: {\"http_code\":200,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/vehiculos: {\"http_code\":200,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/servicios: {\"http_code\":200,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/empleados: {\"http_code\":200,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/ordenes: {\"http_code\":200,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/reportes: {\"http_code\":200,\"expected_redirect_or_forbidden\":true}"
+        ]
+    }
+}

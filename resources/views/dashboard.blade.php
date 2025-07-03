@@ -27,7 +27,7 @@
                     </div>
                     <div class="flex-grow-1 ms-3">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Total Clientes
+                            Total Clientes Activos
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             {{ $stats['total_clientes'] ?? 0 }}
@@ -49,7 +49,7 @@
                     </div>
                     <div class="flex-grow-1 ms-3">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Total Vehículos
+                            Total Vehículos Activos
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             {{ $stats['total_vehiculos'] ?? 0 }}

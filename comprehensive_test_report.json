@@ -1,0 +1,123 @@
+{
+    "timestamp": "2025-07-02 01:17:32",
+    "test_summary": {
+        "clientes": {
+            "success_rate": 0,
+            "operations_tested": 1,
+            "successful_operations": 0
+        },
+        "vehiculos": {
+            "success_rate": 0,
+            "operations_tested": 1,
+            "successful_operations": 0
+        },
+        "servicios": {
+            "success_rate": 0,
+            "operations_tested": 1,
+            "successful_operations": 0
+        },
+        "empleados": {
+            "success_rate": 0,
+            "operations_tested": 1,
+            "successful_operations": 0
+        },
+        "ordenes": {
+            "success_rate": 0,
+            "operations_tested": 1,
+            "successful_operations": 0
+        }
+    },
+    "detailed_results": {
+        "login": {
+            "status": "FAILED",
+            "redirect": false
+        },
+        "dashboard": {
+            "access": true,
+            "statistics": []
+        },
+        "clientes": {
+            "create": {
+                "page_access": true,
+                "submission": 200,
+                "status": "FAILED"
+            },
+            "read": {
+                "list_access": true,
+                "item_in_list": false
+            },
+            "update": [],
+            "delete": [],
+            "validation": {
+                "required_fields": false,
+                "duplicate_email": true
+            }
+        },
+        "vehiculos": {
+            "create": {
+                "page_access": true,
+                "submission": 200,
+                "status": "FAILED"
+            },
+            "read": {
+                "list_access": false
+            },
+            "update": [],
+            "delete": [],
+            "validation": {
+                "required_fields": false
+            }
+        },
+        "servicios": {
+            "create": {
+                "page_access": true,
+                "submission": 200,
+                "status": "FAILED"
+            },
+            "read": {
+                "list_access": true,
+                "item_in_list": false
+            },
+            "update": [],
+            "delete": [],
+            "validation": {
+                "required_fields": false
+            }
+        },
+        "empleados": {
+            "create": {
+                "page_access": true,
+                "submission": 200,
+                "status": "FAILED"
+            },
+            "read": {
+                "list_access": false
+            },
+            "update": [],
+            "delete": [],
+            "validation": {
+                "required_fields": false,
+                "duplicate_email": true
+            }
+        },
+        "ordenes": {
+            "create": {
+                "page_access": true,
+                "submission": 200,
+                "status": "FAILED"
+            },
+            "read": {
+                "list_access": true,
+                "item_in_list": false
+            },
+            "update": [],
+            "delete": [],
+            "validation": {
+                "required_fields": false
+            }
+        },
+        "statistics": [],
+        "cross_references": []
+    },
+    "recommendations": []
+}

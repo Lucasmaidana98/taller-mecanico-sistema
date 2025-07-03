@@ -1,0 +1,215 @@
+{
+    "test_timestamp": "2025-07-02 13:57:54",
+    "application_url": "http:\/\/localhost:8002",
+    "total_modules_tested": 5,
+    "test_results": {
+        "authentication": {
+            "status": "PASS",
+            "message": "Login and dashboard access successful"
+        },
+        "clientes": {
+            "read_index": {
+                "status": "PASS",
+                "http_code": 200,
+                "has_grid": true,
+                "has_create_button": false
+            },
+            "create": {
+                "status": "FAIL",
+                "http_code": 200,
+                "redirected": false
+            },
+            "create_verification": {
+                "status": "FAIL",
+                "record_appears": false
+            },
+            "update_form": {
+                "status": "PASS",
+                "form_prepopulated": false
+            },
+            "update": {
+                "status": "FAIL",
+                "http_code": 500
+            },
+            "update_verification": {
+                "status": "FAIL",
+                "updated_record_appears": false
+            },
+            "delete": {
+                "status": "FAIL",
+                "http_code": 200
+            },
+            "delete_verification": {
+                "status": "PASS",
+                "record_removed": true
+            }
+        },
+        "vehiculos": {
+            "read_index": {
+                "status": "PASS",
+                "http_code": 200,
+                "has_grid": true,
+                "has_create_button": false
+            },
+            "create_form": {
+                "status": "PASS",
+                "has_client_dropdown": true
+            }
+        },
+        "servicios": {
+            "read_index": {
+                "status": "PASS",
+                "http_code": 200,
+                "has_grid": true,
+                "has_create_button": false
+            },
+            "create_form": {
+                "status": "PASS",
+                "has_price_field": true,
+                "has_duration_field": false
+            },
+            "create": {
+                "status": "FAIL",
+                "http_code": 200
+            },
+            "create_verification": {
+                "status": "FAIL",
+                "record_appears": false
+            },
+            "update_form": {
+                "status": "PASS",
+                "form_prepopulated": false
+            },
+            "update": {
+                "status": "FAIL",
+                "http_code": 200
+            },
+            "update_verification": {
+                "status": "FAIL",
+                "updated_record_appears": false
+            },
+            "delete": {
+                "status": "FAIL",
+                "http_code": 200
+            },
+            "delete_verification": {
+                "status": "PASS",
+                "record_removed": true
+            }
+        },
+        "empleados": {
+            "read_index": {
+                "status": "PASS",
+                "http_code": 200,
+                "has_grid": true,
+                "has_create_button": false
+            },
+            "create_form": {
+                "status": "PASS",
+                "has_salary_field": true,
+                "has_position_field": false
+            },
+            "create": {
+                "status": "FAIL",
+                "http_code": 200
+            },
+            "create_verification": {
+                "status": "FAIL",
+                "record_appears": false
+            },
+            "update_form": {
+                "status": "PASS",
+                "form_prepopulated": false
+            },
+            "update": {
+                "status": "FAIL",
+                "http_code": 500
+            },
+            "update_verification": {
+                "status": "FAIL",
+                "updated_record_appears": false
+            },
+            "delete": {
+                "status": "FAIL",
+                "http_code": 200
+            },
+            "delete_verification": {
+                "status": "PASS",
+                "record_removed": true
+            }
+        },
+        "ordenes": {
+            "read_index": {
+                "status": "PASS",
+                "http_code": 200,
+                "has_grid": true,
+                "has_create_button": false
+            },
+            "create_form": {
+                "status": "PASS",
+                "has_client_dropdown": true,
+                "has_vehicle_dropdown": true,
+                "has_service_dropdown": true,
+                "has_employee_dropdown": true
+            }
+        },
+        "alert_behavior": {
+            "validation_alerts": {
+                "status": "FAIL",
+                "proper_error_handling": true,
+                "http_code": 200
+            }
+        },
+        "cross_module_integration": []
+    },
+    "summary": {
+        "authentication": {
+            "total_tests": 0,
+            "passed": 0,
+            "failed": 0,
+            "pass_rate": 0
+        },
+        "clientes": {
+            "total_tests": 8,
+            "passed": 3,
+            "failed": 5,
+            "pass_rate": 37.5
+        },
+        "vehiculos": {
+            "total_tests": 2,
+            "passed": 2,
+            "failed": 0,
+            "pass_rate": 100
+        },
+        "servicios": {
+            "total_tests": 9,
+            "passed": 4,
+            "failed": 5,
+            "pass_rate": 44.44
+        },
+        "empleados": {
+            "total_tests": 9,
+            "passed": 4,
+            "failed": 5,
+            "pass_rate": 44.44
+        },
+        "ordenes": {
+            "total_tests": 2,
+            "passed": 2,
+            "failed": 0,
+            "pass_rate": 100
+        },
+        "alert_behavior": {
+            "total_tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "pass_rate": 0
+        },
+        "cross_module_integration": {
+            "total_tests": 0,
+            "passed": 0,
+            "failed": 0,
+            "pass_rate": 0
+        }
+    }
+}

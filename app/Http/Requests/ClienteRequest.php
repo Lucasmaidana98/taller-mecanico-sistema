@@ -22,14 +22,15 @@ class ClienteRequest extends FormRequest
      */
     public function rules(): array
     {
-        $clienteId = Route::current()->parameter('cliente');
+        $cliente = Route::current()->parameter('cliente');
+        $clienteId = $cliente ? $cliente->id : null;
         
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:clientes,email' . ($clienteId ? ',' . $clienteId : ''),
-            'phone' => 'required|string',
-            'address' => 'required|string',
-            'document_number' => 'required|string|unique:clientes,document_number' . ($clienteId ? ',' . $clienteId : ''),
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:500',
+            'document_number' => 'required|string|max:20|unique:clientes,document_number' . ($clienteId ? ',' . $clienteId : ''),
             'status' => 'boolean'
         ];
     }

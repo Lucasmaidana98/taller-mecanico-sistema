@@ -82,17 +82,17 @@
             <div class="card-body text-center">
                 <div class="row">
                     <div class="col-12 mb-3">
-                        <h3 class="text-primary">{{ $servicio->ordenTrabajos->count() }}</h3>
+                        <h3 class="text-primary">{{ $servicio->ordenesTrabajo ? $servicio->ordenesTrabajo->count() : 0 }}</h3>
                         <small class="text-muted">Órdenes Totales</small>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <h4 class="text-success">{{ $servicio->ordenTrabajos->where('status', 'completed')->count() }}</h4>
+                        <h4 class="text-success">{{ $servicio->ordenesTrabajo ? $servicio->ordenesTrabajo->where('status', 'completed')->count() : 0 }}</h4>
                         <small class="text-muted">Completadas</small>
                     </div>
                     <div class="col-6">
-                        <h4 class="text-warning">{{ $servicio->ordenTrabajos->whereIn('status', ['pending', 'in_progress'])->count() }}</h4>
+                        <h4 class="text-warning">{{ $servicio->ordenesTrabajo ? $servicio->ordenesTrabajo->whereIn('status', ['pending', 'in_progress'])->count() : 0 }}</h4>
                         <small class="text-muted">Pendientes</small>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
 </div>
 
 <!-- Recent Orders -->
-@if($servicio->ordenTrabajos->count() > 0)
+@if($servicio->ordenesTrabajo && $servicio->ordenesTrabajo->count() > 0)
 <div class="card">
     <div class="card-header">
         <h5 class="card-title mb-0">
@@ -126,7 +126,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($servicio->ordenTrabajos->take(10) as $orden)
+                    @foreach($servicio->ordenesTrabajo->take(10) as $orden)
                     <tr>
                         <td><strong>#{{ $orden->id }}</strong></td>
                         <td>{{ $orden->cliente->name }}</td>

@@ -80,7 +80,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Total Vehículos</h5>
-                        <h3 class="mb-0">{{ $vehiculos->total() }}</h3>
+                        <h3 class="mb-0">{{ $stats['total_vehiculos'] }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-car fa-2x opacity-75"></i>
@@ -95,7 +95,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Activos</h5>
-                        <h3 class="mb-0">{{ $vehiculos->where('status', true)->count() }}</h3>
+                        <h3 class="mb-0">{{ $stats['vehiculos_activos'] }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-check-circle fa-2x opacity-75"></i>
@@ -110,7 +110,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">En Servicio</h5>
-                        <h3 class="mb-0">{{ $vehiculos->whereHas('ordenTrabajos', function($q) { $q->whereIn('status', ['pending', 'in_progress']); })->count() }}</h3>
+                        <h3 class="mb-0">{{ $stats['vehiculos_en_servicio'] }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-tools fa-2x opacity-75"></i>
@@ -124,8 +124,8 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <h5 class="card-title">Registros (30 días)</h5>
-                        <h3 class="mb-0">{{ $vehiculos->where('created_at', '>=', now()->subDays(30))->count() }}</h3>
+                        <h5 class="card-title">Marcas Diferentes</h5>
+                        <h3 class="mb-0">{{ $stats['marcas_diferentes'] }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-plus-circle fa-2x opacity-75"></i>
@@ -208,12 +208,12 @@
                             @endif
                         </td>
                         <td>
-                            @if($vehiculo->ordenTrabajos->count() > 0)
-                                @php $ultimaOrden = $vehiculo->ordenTrabajos->first(); @endphp
+                            @if($vehiculo->ordenesTrabajo && $vehiculo->ordenesTrabajo->count() > 0)
+                                @php $ultimaOrden = $vehiculo->ordenesTrabajo->first(); @endphp
                                 <small class="text-muted">
-                                    {{ $ultimaOrden->start_date->format('d/m/Y') }}
+                                    {{ optional($ultimaOrden->start_date)->format('d/m/Y') ?? 'Sin fecha' }}
                                     <br>
-                                    @switch($ultimaOrden->status)
+                                    @switch($ultimaOrden->status ?? 'unknown')
                                         @case('pending')
                                             <span class="badge bg-warning">Pendiente</span>
                                             @break
@@ -226,6 +226,8 @@
                                         @case('cancelled')
                                             <span class="badge bg-danger">Cancelada</span>
                                             @break
+                                        @default
+                                            <span class="badge bg-secondary">Desconocido</span>
                                     @endswitch
                                 </small>
                             @else

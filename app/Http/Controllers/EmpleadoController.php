@@ -49,7 +49,15 @@ class EmpleadoController extends Controller
                 $query->where('salary', '<=', $request->get('salary_max'));
             }
 
-            $empleados = $query->latest()->paginate(15);
+            $empleados = $query->with('ordenesTrabajo')->latest()->paginate(15);
+
+            // Obtener posiciones distintas para el filtro
+            $positions = Empleado::distinct()
+                ->pluck('position')
+                ->filter()
+                ->sort()
+                ->values()
+                ->toArray();
 
             // Respuesta AJAX
             if ($request->ajax()) {
@@ -60,7 +68,7 @@ class EmpleadoController extends Controller
                 ]);
             }
 
-            return view('empleados.index', compact('empleados'));
+            return view('empleados.index', compact('empleados', 'positions'));
 
         } catch (\Exception $e) {
             Log::error('Error al obtener empleados: ' . $e->getMessage());

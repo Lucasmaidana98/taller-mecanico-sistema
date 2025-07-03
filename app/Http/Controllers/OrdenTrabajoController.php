@@ -148,7 +148,7 @@ class OrdenTrabajoController extends Controller
                 ], 201);
             }
 
-            return redirect()->route('ordenes-trabajo.index')
+            return redirect()->route('ordenes.index')
                 ->with('success', 'Orden de trabajo creada exitosamente');
 
         } catch (\Exception $e) {
@@ -249,7 +249,7 @@ class OrdenTrabajoController extends Controller
                 ]);
             }
 
-            return redirect()->route('ordenes-trabajo.index')
+            return redirect()->route('ordenes.index')
                 ->with('success', 'Orden de trabajo actualizada exitosamente');
 
         } catch (\Exception $e) {
@@ -300,7 +300,7 @@ class OrdenTrabajoController extends Controller
                 ]);
             }
 
-            return redirect()->route('ordenes-trabajo.index')
+            return redirect()->route('ordenes.index')
                 ->with('success', 'Orden de trabajo eliminada exitosamente');
 
         } catch (\Exception $e) {

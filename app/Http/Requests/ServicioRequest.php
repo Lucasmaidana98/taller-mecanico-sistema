@@ -23,9 +23,9 @@ class ServicioRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'duration_hours' => 'required|numeric|min:0',
+            'description' => 'required|string|max:1000',
+            'price' => 'required|numeric|min:0.01|max:999999.99',
+            'duration_hours' => 'required|numeric|min:0.25|max:24',
             'status' => 'boolean'
         ];
     }

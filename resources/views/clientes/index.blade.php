@@ -263,7 +263,8 @@
 
 <script>
 $(document).ready(function() {
-    $('#clientesTable').DataTable({
+    // Initialize DataTable and store reference globally
+    window.dataTables.clientesTable = $('#clientesTable').DataTable({
         responsive: true,
         pageLength: 10,
         order: [[0, 'desc']],
@@ -272,8 +273,17 @@ $(document).ready(function() {
         ],
         language: {
             url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
+        },
+        drawCallback: function() {
+            // Re-attach delete button events after table draw
+            attachDeleteEvents();
         }
     });
+    
+    // Store table ID for global access
+    window.dataTables.mainTable = window.dataTables.clientesTable;
+    
+    // Delete events are handled by global layout script
 });
 </script>
 

@@ -111,10 +111,10 @@
                         <h3 class="mb-0">
                             @php
                                 $masPopular = $servicios->sortByDesc(function($servicio) {
-                                    return $servicio->ordenTrabajos->count();
+                                    return $servicio->ordenesTrabajo->count();
                                 })->first();
                             @endphp
-                            {{ $masPopular ? $masPopular->ordenTrabajos->count() : 0 }}
+                            {{ $masPopular ? $masPopular->ordenesTrabajo->count() : 0 }}
                         </h3>
                     </div>
                     <div class="align-self-center">
@@ -181,7 +181,7 @@
                         </td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <span class="badge bg-info me-2">{{ $servicio->ordenTrabajos->count() }}</span>
+                                <span class="badge bg-info me-2">{{ $servicio->ordenesTrabajo->count() }}</span>
                                 <small class="text-muted">órdenes</small>
                             </div>
                         </td>

@@ -23,9 +23,42 @@ class ReporteController extends Controller
     /**
      * Display a listing of reports.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        return view('reportes.index');
+        try {
+            // Generar estadísticas básicas para mostrar en la vista
+            $stats = [
+                'ordenes_completadas' => OrdenTrabajo::where('status', 'completed')->count(),
+                'ingresos_totales' => OrdenTrabajo::where('status', 'completed')->sum('total_amount'),
+                'clientes_atendidos' => OrdenTrabajo::distinct('cliente_id')->count('cliente_id'),
+                'promedio_orden' => OrdenTrabajo::where('status', 'completed')->avg('total_amount') ?? 0,
+            ];
+
+            // Initialize empty arrays for the reports
+            $reporteServicios = [];
+            $reporteEmpleados = [];
+            $ordenes = [];
+
+            return view('reportes.index_simple', compact('stats'));
+
+        } catch (\Exception $e) {
+            Log::error('Error al cargar página de reportes: ' . $e->getMessage());
+            
+            // Estadísticas por defecto en caso de error
+            $stats = [
+                'ordenes_completadas' => 0,
+                'ingresos_totales' => 0,
+                'clientes_atendidos' => 0,
+                'promedio_orden' => 0,
+            ];
+
+            // Initialize empty arrays for the reports
+            $reporteServicios = [];
+            $reporteEmpleados = [];
+            $ordenes = [];
+
+            return view('reportes.index_simple', compact('stats'));
+        }
     }
 
     /**

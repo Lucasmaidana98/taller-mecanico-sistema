@@ -22,15 +22,16 @@ class EmpleadoRequest extends FormRequest
      */
     public function rules(): array
     {
-        $empleadoId = Route::current()->parameter('empleado');
+        $empleado = Route::current()->parameter('empleado');
+        $empleadoId = $empleado ? $empleado->id : null;
         
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:empleados,email' . ($empleadoId ? ',' . $empleadoId : ''),
-            'phone' => 'required|string',
-            'position' => 'required|string',
-            'salary' => 'required|numeric|min:0',
-            'hire_date' => 'required|date',
+            'phone' => 'required|string|max:20',
+            'position' => 'required|string|max:100',
+            'salary' => 'required|numeric|min:1|max:999999.99',
+            'hire_date' => 'required|date|before_or_equal:today',
             'status' => 'boolean'
         ];
     }

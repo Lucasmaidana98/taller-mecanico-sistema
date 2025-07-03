@@ -22,7 +22,8 @@ class VehiculoRequest extends FormRequest
      */
     public function rules(): array
     {
-        $vehiculoId = Route::current()->parameter('vehiculo');
+        $vehiculo = Route::current()->parameter('vehiculo');
+        $vehiculoId = $vehiculo ? $vehiculo->id : null;
         $currentYear = date('Y');
         
         return [
@@ -30,9 +31,9 @@ class VehiculoRequest extends FormRequest
             'brand' => 'required|string|max:255',
             'model' => 'required|string|max:255',
             'year' => 'required|integer|min:1900|max:' . $currentYear,
-            'license_plate' => 'required|string|unique:vehiculos,license_plate' . ($vehiculoId ? ',' . $vehiculoId : ''),
-            'vin' => 'required|string|unique:vehiculos,vin' . ($vehiculoId ? ',' . $vehiculoId : ''),
-            'color' => 'required|string',
+            'license_plate' => 'required|string|max:20|unique:vehiculos,license_plate' . ($vehiculoId ? ',' . $vehiculoId : ''),
+            'vin' => 'required|string|size:17|unique:vehiculos,vin' . ($vehiculoId ? ',' . $vehiculoId : ''),
+            'color' => 'required|string|max:50',
             'status' => 'boolean'
         ];
     }

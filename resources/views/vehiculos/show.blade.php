@@ -181,7 +181,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Órdenes Totales</h5>
-                        <h3 class="mb-0">{{ $vehiculo->ordenTrabajos->count() }}</h3>
+                        <h3 class="mb-0">{{ $vehiculo->ordenesTrabajo ? $vehiculo->ordenesTrabajo->count() : 0 }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-clipboard-list fa-2x opacity-75"></i>
@@ -196,7 +196,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Completadas</h5>
-                        <h3 class="mb-0">{{ $vehiculo->ordenTrabajos->where('status', 'completed')->count() }}</h3>
+                        <h3 class="mb-0">{{ $vehiculo->ordenesTrabajo ? $vehiculo->ordenesTrabajo->where('status', 'completed')->count() : 0 }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-check-circle fa-2x opacity-75"></i>
@@ -211,7 +211,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">En Proceso</h5>
-                        <h3 class="mb-0">{{ $vehiculo->ordenTrabajos->whereIn('status', ['pending', 'in_progress'])->count() }}</h3>
+                        <h3 class="mb-0">{{ $vehiculo->ordenesTrabajo ? $vehiculo->ordenesTrabajo->whereIn('status', ['pending', 'in_progress'])->count() : 0 }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-clock fa-2x opacity-75"></i>
@@ -226,7 +226,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Total Gastado</h5>
-                        <h3 class="mb-0">${{ number_format($vehiculo->ordenTrabajos->where('status', 'completed')->sum('total_amount'), 2) }}</h3>
+                        <h3 class="mb-0">${{ number_format($vehiculo->ordenesTrabajo ? $vehiculo->ordenesTrabajo->where('status', 'completed')->sum('total_amount') : 0, 2) }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-dollar-sign fa-2x opacity-75"></i>
@@ -254,7 +254,7 @@
                 @endcan
             </div>
             <div class="card-body">
-                @if($vehiculo->ordenTrabajos->count() > 0)
+                @if($vehiculo->ordenesTrabajo && $vehiculo->ordenesTrabajo->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -270,7 +270,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($vehiculo->ordenTrabajos as $orden)
+                            @foreach($vehiculo->ordenesTrabajo as $orden)
                             <tr>
                                 <td>
                                     <strong>#{{ $orden->id }}</strong>
@@ -356,7 +356,7 @@
     </div>
 </div>
 
-@if($vehiculo->ordenTrabajos->where('status', 'completed')->count() > 0)
+@if($vehiculo->ordenesTrabajo && $vehiculo->ordenesTrabajo->where('status', 'completed')->count() > 0)
 <!-- Servicios Más Frecuentes -->
 <div class="row mt-4">
     <div class="col-md-6">
@@ -369,13 +369,13 @@
             </div>
             <div class="card-body">
                 @php
-                    $servicios = $vehiculo->ordenTrabajos->where('status', 'completed')->groupBy('servicio_id')->map(function($items) {
+                    $servicios = $vehiculo->ordenesTrabajo ? $vehiculo->ordenesTrabajo->where('status', 'completed')->groupBy('servicio_id')->map(function($items) {
                         return [
                             'servicio' => $items->first()->servicio,
                             'count' => $items->count(),
                             'total' => $items->sum('total_amount')
                         ];
-                    })->sortByDesc('count')->take(5);
+                    })->sortByDesc('count')->take(5) : collect();
                 @endphp
                 
                 @foreach($servicios as $servicio)
@@ -403,7 +403,7 @@
             </div>
             <div class="card-body">
                 @php
-                    $ultimasOrdenes = $vehiculo->ordenTrabajos->where('status', 'completed')->take(5);
+                    $ultimasOrdenes = $vehiculo->ordenesTrabajo ? $vehiculo->ordenesTrabajo->where('status', 'completed')->take(5) : collect();
                 @endphp
                 
                 @foreach($ultimasOrdenes as $orden)

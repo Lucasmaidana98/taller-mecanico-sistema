@@ -1,0 +1,122 @@
+{
+    "timestamp": "2025-07-02 14:04:11",
+    "total_tests": 43,
+    "passed_tests": 38,
+    "failed_tests": 5,
+    "success_rate": 88.37,
+    "detailed_results": {
+        "clientes": {
+            "read": {
+                "index_accessible": true,
+                "has_table": true,
+                "has_create_link": true
+            },
+            "create_form": {
+                "form_accessible": true,
+                "has_required_fields": true
+            },
+            "create_operation": {
+                "http_code": 302,
+                "redirected_successfully": true,
+                "redirect_to_index": true
+            },
+            "create_verification": {
+                "record_appears": false
+            },
+            "update_form": {
+                "edit_accessible": true,
+                "form_prepopulated": false
+            },
+            "update_operation": {
+                "http_code": 500,
+                "redirected_successfully": false
+            },
+            "update_verification": {
+                "updated_record_appears": false
+            },
+            "delete_operation": {
+                "http_code": 302,
+                "redirected_successfully": true
+            },
+            "delete_verification": {
+                "record_removed": true
+            }
+        },
+        "vehiculos": {
+            "read": {
+                "index_accessible": true,
+                "has_table": true
+            },
+            "create_form": {
+                "form_accessible": true,
+                "has_client_dropdown": true
+            },
+            "create_operation": {
+                "http_code": 302,
+                "redirected_successfully": true
+            },
+            "create_verification": {
+                "record_appears": false
+            }
+        },
+        "servicios": {
+            "read": {
+                "index_accessible": true,
+                "has_table": true
+            },
+            "create_form": {
+                "form_accessible": true,
+                "has_price_field": true,
+                "has_duration_field": true
+            },
+            "create_operation": {
+                "http_code": 302,
+                "redirected_successfully": true
+            },
+            "create_verification": {
+                "record_appears": true
+            }
+        },
+        "empleados": {
+            "read": {
+                "index_accessible": true,
+                "has_table": true
+            },
+            "create_form": {
+                "form_accessible": true,
+                "has_salary_field": true,
+                "has_position_field": true
+            },
+            "create_operation": {
+                "http_code": 302,
+                "redirected_successfully": true
+            },
+            "create_verification": {
+                "record_appears": true
+            }
+        },
+        "ordenes": {
+            "read": {
+                "index_accessible": true,
+                "has_table": true
+            },
+            "create_form": {
+                "form_accessible": true,
+                "has_dropdowns": true
+            }
+        },
+        "validation_alerts": {
+            "validation": {
+                "handles_invalid_data": true,
+                "proper_error_response": true
+            }
+        },
+        "cross_module_integration": {
+            "integration": {
+                "clientes_accessible": true,
+                "vehiculos_accessible": true,
+                "cross_references": true
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "authentication": {
+        "login_page_access": "PASS",
+        "csrf_token_found": "PASS",
+        "login_success": "PASS",
+        "dashboard_access": "PASS"
+    },
+    "delete_operations": {
+        "clientes_access": "PASS",
+        "delete_buttons_found": "PASS",
+        "clean_client_found": "FAIL",
+        "error_handling_422": "FAIL",
+        "js_confirmation": "PASS"
+    },
+    "profile_functionality": {
+        "profile_access": "PASS",
+        "name_input": "PASS",
+        "email_input": "PASS",
+        "password_input": "PASS",
+        "current_password_input": "PASS",
+        "password_confirmation": "PASS",
+        "bootstrap_forms": "PASS",
+        "bootstrap_cards": "PASS",
+        "profile_update_route": "FAIL",
+        "password_update_route": "FAIL",
+        "profile_destroy_route": "FAIL",
+        "csrf_protection": "PASS",
+        "delete_modal": "PASS"
+    },
+    "model_integration": {
+        "cliente_model_access": "PASS",
+        "routes_registered": "FAIL",
+        "clientes\/index.blade.php": "PASS",
+        "profile\/edit.blade.php": "PASS",
+        "layouts\/app.blade.php": "PASS"
+    },
+    "error_handling": [],
+    "summary": {
+        "total_tests": 27,
+        "passed": 21,
+        "failed": 6,
+        "success_rate": 77.78,
+        "categories": {
+            "authentication": 100,
+            "delete_operations": 60,
+            "profile_functionality": 76.9,
+            "model_integration": 80,
+            "error_handling": 0
+        }
+    }
+}

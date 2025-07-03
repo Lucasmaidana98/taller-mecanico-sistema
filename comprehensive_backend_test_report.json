@@ -1,0 +1,482 @@
+{
+    "authentication": [
+        {
+            "test": "GET \/login",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "has_login_form": false
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "GET \/register",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "has_register_form": false
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "GET \/forgot-password",
+            "passed": false,
+            "details": {
+                "http_code": 0
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "POST \/login (invalid credentials)",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "expected_codes": [
+                    200,
+                    302,
+                    422
+                ]
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "POST \/register",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "expected_codes": [
+                    200,
+                    201,
+                    302
+                ]
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        }
+    ],
+    "main_modules": [
+        {
+            "test": "clientes index",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/clientes"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "clientes create",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/clientes\/create"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "clientes show",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/clientes\/1"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "clientes edit",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/clientes\/1\/edit"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "vehiculos index",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/vehiculos"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "vehiculos create",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/vehiculos\/create"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "vehiculos show",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/vehiculos\/1"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "vehiculos edit",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/vehiculos\/1\/edit"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "servicios index",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/servicios"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "servicios create",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/servicios\/create"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "servicios show",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/servicios\/1"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "servicios edit",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/servicios\/1\/edit"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "empleados index",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/empleados"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "empleados create",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/empleados\/create"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "empleados show",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/empleados\/1"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "empleados edit",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/empleados\/1\/edit"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "ordenes index",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/ordenes"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "ordenes create",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/ordenes\/create"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "ordenes show",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/ordenes\/1"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "ordenes edit",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/ordenes\/1\/edit"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        }
+    ],
+    "dashboard_profile": [
+        {
+            "test": "dashboard",
+            "passed": false,
+            "details": {
+                "http_code": 0
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "profile edit",
+            "passed": false,
+            "details": {
+                "http_code": 0
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        }
+    ],
+    "reportes": [
+        {
+            "test": "reportes index",
+            "passed": false,
+            "details": {
+                "http_code": 0
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "reportes exportar",
+            "passed": false,
+            "details": {
+                "http_code": 0
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        }
+    ],
+    "error_handling": [
+        {
+            "test": "404 for non-existent route",
+            "passed": false,
+            "details": {
+                "http_code": 0
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "Method not allowed",
+            "passed": false,
+            "details": {
+                "http_code": 0
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "Middleware protection for \/dashboard",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "Middleware protection for \/profile",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "Middleware protection for \/vehiculos",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "Middleware protection for \/servicios",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "Middleware protection for \/empleados",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "Middleware protection for \/ordenes",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "Middleware protection for \/reportes",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "expected_redirect_or_forbidden": true
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        }
+    ],
+    "route_parameters": [
+        {
+            "test": "clientes invalid ID",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/clientes\/invalid-id"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "clientes large ID",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/clientes\/999999"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "vehiculos invalid ID",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/vehiculos\/invalid-id"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "vehiculos large ID",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/vehiculos\/999999"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "servicios invalid ID",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/servicios\/invalid-id"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "servicios large ID",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/servicios\/999999"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "empleados invalid ID",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/empleados\/invalid-id"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        },
+        {
+            "test": "empleados large ID",
+            "passed": false,
+            "details": {
+                "http_code": 0,
+                "url": "http:\/\/localhost:8002\/empleados\/999999"
+            },
+            "timestamp": "2025-07-02 13:54:52"
+        }
+    ],
+    "summary": {
+        "total_tests": 46,
+        "passed": 0,
+        "failed": 46,
+        "errors": [
+            "GET \/login: {\"http_code\":0,\"has_login_form\":false}",
+            "GET \/register: {\"http_code\":0,\"has_register_form\":false}",
+            "GET \/forgot-password: {\"http_code\":0}",
+            "POST \/login (invalid credentials): {\"http_code\":0,\"expected_codes\":[200,302,422]}",
+            "POST \/register: {\"http_code\":0,\"expected_codes\":[200,201,302]}",
+            "clientes index: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/clientes\"}",
+            "clientes create: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/clientes\\\/create\"}",
+            "clientes show: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/clientes\\\/1\"}",
+            "clientes edit: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/clientes\\\/1\\\/edit\"}",
+            "vehiculos index: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/vehiculos\"}",
+            "vehiculos create: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/vehiculos\\\/create\"}",
+            "vehiculos show: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/vehiculos\\\/1\"}",
+            "vehiculos edit: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/vehiculos\\\/1\\\/edit\"}",
+            "servicios index: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/servicios\"}",
+            "servicios create: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/servicios\\\/create\"}",
+            "servicios show: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/servicios\\\/1\"}",
+            "servicios edit: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/servicios\\\/1\\\/edit\"}",
+            "empleados index: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/empleados\"}",
+            "empleados create: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/empleados\\\/create\"}",
+            "empleados show: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/empleados\\\/1\"}",
+            "empleados edit: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/empleados\\\/1\\\/edit\"}",
+            "ordenes index: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/ordenes\"}",
+            "ordenes create: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/ordenes\\\/create\"}",
+            "ordenes show: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/ordenes\\\/1\"}",
+            "ordenes edit: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/ordenes\\\/1\\\/edit\"}",
+            "dashboard: {\"http_code\":0}",
+            "profile edit: {\"http_code\":0}",
+            "reportes index: {\"http_code\":0}",
+            "reportes exportar: {\"http_code\":0}",
+            "404 for non-existent route: {\"http_code\":0}",
+            "Method not allowed: {\"http_code\":0}",
+            "clientes invalid ID: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/clientes\\\/invalid-id\"}",
+            "clientes large ID: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/clientes\\\/999999\"}",
+            "vehiculos invalid ID: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/vehiculos\\\/invalid-id\"}",
+            "vehiculos large ID: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/vehiculos\\\/999999\"}",
+            "servicios invalid ID: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/servicios\\\/invalid-id\"}",
+            "servicios large ID: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/servicios\\\/999999\"}",
+            "empleados invalid ID: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/empleados\\\/invalid-id\"}",
+            "empleados large ID: {\"http_code\":0,\"url\":\"http:\\\/\\\/localhost:8002\\\/empleados\\\/999999\"}",
+            "Middleware protection for \/dashboard: {\"http_code\":0,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/profile: {\"http_code\":0,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/vehiculos: {\"http_code\":0,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/servicios: {\"http_code\":0,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/empleados: {\"http_code\":0,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/ordenes: {\"http_code\":0,\"expected_redirect_or_forbidden\":true}",
+            "Middleware protection for \/reportes: {\"http_code\":0,\"expected_redirect_or_forbidden\":true}"
+        ]
+    }
+}

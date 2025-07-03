@@ -142,7 +142,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Órdenes Completadas</h5>
-                        <h3 class="mb-0">{{ $cliente->ordenTrabajos->where('status', 'completed')->count() }}</h3>
+                        <h3 class="mb-0">{{ $cliente->ordenesTrabajo->where('status', 'completed')->count() }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-check-circle fa-2x opacity-75"></i>
@@ -157,7 +157,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Órdenes Pendientes</h5>
-                        <h3 class="mb-0">{{ $cliente->ordenTrabajos->whereIn('status', ['pending', 'in_progress'])->count() }}</h3>
+                        <h3 class="mb-0">{{ $cliente->ordenesTrabajo->whereIn('status', ['pending', 'in_progress'])->count() }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-clock fa-2x opacity-75"></i>
@@ -172,7 +172,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Total Gastado</h5>
-                        <h3 class="mb-0">${{ number_format($cliente->ordenTrabajos->where('status', 'completed')->sum('total_amount'), 2) }}</h3>
+                        <h3 class="mb-0">${{ number_format($cliente->ordenesTrabajo->where('status', 'completed')->sum('total_amount'), 2) }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-dollar-sign fa-2x opacity-75"></i>
@@ -261,8 +261,8 @@
                 @endcan
             </div>
             <div class="card-body">
-                @if($cliente->ordenTrabajos->count() > 0)
-                    @foreach($cliente->ordenTrabajos->take(5) as $orden)
+                @if($cliente->ordenesTrabajo->count() > 0)
+                    @foreach($cliente->ordenesTrabajo->take(5) as $orden)
                     <div class="d-flex justify-content-between align-items-center {{ !$loop->last ? 'mb-3 pb-3 border-bottom' : '' }}">
                         <div class="flex-grow-1">
                             <h6 class="mb-1">Orden #{{ $orden->id }}</h6>
@@ -294,7 +294,7 @@
                     </div>
                     @endforeach
                     
-                    @if($cliente->ordenTrabajos->count() > 5)
+                    @if($cliente->ordenesTrabajo->count() > 5)
                     <div class="text-center mt-3">
                         @can('ver-ordenes')
                         <a href="{{ route('ordenes.index', ['cliente_id' => $cliente->id]) }}" class="btn btn-sm btn-outline-primary">
@@ -320,7 +320,7 @@
     </div>
 </div>
 
-@if($cliente->ordenTrabajos->count() > 0)
+@if($cliente->ordenesTrabajo->count() > 0)
 <!-- Historial de Servicios -->
 <div class="row mt-4">
     <div class="col-12">
@@ -346,7 +346,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($cliente->ordenTrabajos as $orden)
+                            @foreach($cliente->ordenesTrabajo as $orden)
                             <tr>
                                 <td>
                                     <strong>#{{ $orden->id }}</strong>

@@ -305,7 +305,7 @@
                     </div>
                 @endif
                 
-                @if ($errors->any())
+                @if (isset($errors) && $errors->any())
                     <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
                         <i class="fas fa-exclamation-circle me-2"></i>
                         <strong>Por favor corrige los siguientes errores:</strong>
@@ -334,35 +334,211 @@
     
     <!-- Custom JS -->
     <script>
-        // Auto-hide alerts after 5 seconds
+        // Global variables
+        window.dataTables = {};
+        
+        // Auto-hide alerts after 8 seconds (increased from 5)
         setTimeout(function() {
             $('.alert').alert('close');
-        }, 5000);
+        }, 8000);
         
-        // Confirm delete actions
-        $('.btn-delete').on('click', function(e) {
-            e.preventDefault();
-            let form = $(this).closest('form');
-            
+        // Show success alert
+        function showSuccessAlert(message) {
             Swal.fire({
-                title: '¿Estás seguro?',
-                text: "Esta acción no se puede deshacer",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#ef4444',
-                cancelButtonColor: '#64748b',
-                confirmButtonText: 'Sí, eliminar',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit();
+                icon: 'success',
+                title: '¡Éxito!',
+                text: message,
+                timer: 3000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+        }
+        
+        // Show error alert
+        function showErrorAlert(message) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: message,
+                timer: 5000,
+                showConfirmButton: true,
+                toast: true,
+                position: 'top-end'
+            });
+        }
+        
+        // Show persistent help alert
+        function showHelpAlert(message, target = 'body') {
+            $(target).prepend(`
+                <div class="alert alert-info alert-dismissible fade show help-alert" role="alert">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Consejo:</strong> ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `);
+        }
+        
+        // Reload DataTable
+        function reloadDataTable(tableId) {
+            if (window.dataTables[tableId] && typeof window.dataTables[tableId].ajax !== 'undefined') {
+                window.dataTables[tableId].ajax.reload(null, false); // false = keep paging position
+            } else if (window.dataTables[tableId]) {
+                // For non-AJAX tables, reload the page
+                window.location.reload();
+            }
+        }
+        
+        // Update statistics cards
+        function updateStatistics() {
+            // Refresh statistics by reloading specific elements
+            $('.card-body h3').each(function() {
+                $(this).addClass('text-muted').text('Actualizando...');
+            });
+            
+            // After 1 second, reload the page to get fresh statistics
+            setTimeout(function() {
+                window.location.reload();
+            }, 1000);
+        }
+        
+        // Enhanced form submission with callbacks
+        function submitFormWithCallback(form, successCallback, errorCallback) {
+            const formData = new FormData(form);
+            const method = form.method || 'POST';
+            const action = form.action;
+            
+            $.ajax({
+                url: action,
+                method: method,
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    // Show success message from response or default
+                    let successMessage = 'Operación completada exitosamente';
+                    if (response && response.message) {
+                        successMessage = response.message;
+                    }
+                    
+                    showSuccessAlert(successMessage);
+                    
+                    if (typeof successCallback === 'function') {
+                        successCallback(response);
+                    }
+                },
+                error: function(xhr) {
+                    if (typeof errorCallback === 'function') {
+                        errorCallback(xhr);
+                    }
+                    
+                    let message = 'Ocurrió un error inesperado';
+                    let icon = 'error';
+                    
+                    // Handle different error types
+                    if (xhr.status === 422) {
+                        // Validation or business rule error
+                        message = xhr.responseJSON?.message || 'No se puede completar la operación';
+                        icon = 'warning';
+                        
+                        Swal.fire({
+                            icon: icon,
+                            title: 'No se puede eliminar',
+                            text: message,
+                            showConfirmButton: true,
+                            confirmButtonText: 'Entendido',
+                            confirmButtonColor: '#3085d6'
+                        });
+                    } else if (xhr.status === 403) {
+                        message = 'No tienes permisos para realizar esta acción';
+                        showErrorAlert(message);
+                    } else if (xhr.status === 404) {
+                        message = 'El elemento que intentas eliminar no existe';
+                        showErrorAlert(message);
+                    } else {
+                        message = xhr.responseJSON?.message || message;
+                        showErrorAlert(message);
+                    }
                 }
             });
-        });
+        }
+        
+        // Function to attach delete events (for DataTable callbacks)
+        function attachDeleteEvents() {
+            $('.btn-delete').off('click').on('click', function(e) {
+                e.preventDefault();
+                let form = $(this).closest('form');
+                
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "Esta acción no se puede deshacer",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#ef4444',
+                    cancelButtonColor: '#64748b',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Submit with enhanced callback
+                        submitFormWithCallback(form[0], function(response) {
+                            // Success callback - update UI immediately
+                            
+                            // Remove the deleted row from table if DataTable exists
+                            if (window.dataTables && window.dataTables.mainTable) {
+                                // Find and remove the row containing the form
+                                let row = window.dataTables.mainTable.row(form.closest('tr'));
+                                if (row.length) {
+                                    row.remove().draw(false);
+                                } else {
+                                    // Fallback: reload the entire table
+                                    reloadDataTable('mainTable');
+                                }
+                            } else {
+                                // No DataTable, reload page
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 1500);
+                            }
+                            
+                            // Update statistics after a short delay
+                            setTimeout(function() {
+                                updateStatistics();
+                            }, 500);
+                            
+                        }, function(xhr) {
+                            // Error callback
+                            console.error('Delete error:', xhr);
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Make attachDeleteEvents globally available
+        window.attachDeleteEvents = attachDeleteEvents;
+        
         
         // Mobile sidebar toggle
         $('.sidebar-toggle').on('click', function() {
             $('.sidebar').toggleClass('show');
+        });
+        
+        // Initialize help alerts on form pages and delete events
+        $(document).ready(function() {
+            // Initialize delete events on page load
+            attachDeleteEvents();
+            
+            // Show help alerts on create/edit forms
+            if (window.location.pathname.includes('/create')) {
+                showHelpAlert('Completa todos los campos requeridos antes de guardar.', '.main-content');
+            }
+            if (window.location.pathname.includes('/edit')) {
+                showHelpAlert('Modifica los campos que necesites y guarda los cambios.', '.main-content');
+            }
         });
     </script>
     

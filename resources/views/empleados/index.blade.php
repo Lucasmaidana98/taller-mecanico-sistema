@@ -107,7 +107,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h5 class="card-title">Órdenes Activas</h5>
-                        <h3 class="mb-0">{{ $empleados->sum(function($emp) { return $emp->ordenTrabajos->whereIn('status', ['pending', 'in_progress'])->count(); }) }}</h3>
+                        <h3 class="mb-0">{{ $empleados->sum(function($emp) { return $emp->ordenesTrabajo ? $emp->ordenesTrabajo->whereIn('status', ['pending', 'in_progress'])->count() : 0; }) }}</h3>
                     </div>
                     <div class="align-self-center">
                         <i class="fas fa-clipboard-list fa-2x opacity-75"></i>

@@ -136,12 +136,12 @@
                 <div class="row text-center">
                     <div class="col-6">
                         <div class="border-end pe-3">
-                            <h4 class="text-primary mb-1">{{ $servicio->ordenTrabajos->count() }}</h4>
+                            <h4 class="text-primary mb-1">{{ $servicio->ordenesTrabajo ? $servicio->ordenesTrabajo->count() : 0 }}</h4>
                             <small class="text-muted">Órdenes Totales</small>
                         </div>
                     </div>
                     <div class="col-6">
-                        <h4 class="text-success mb-1">${{ number_format($servicio->ordenTrabajos->sum('total_amount'), 2) }}</h4>
+                        <h4 class="text-success mb-1">${{ number_format($servicio->ordenesTrabajo ? $servicio->ordenesTrabajo->sum('total_amount') : 0, 2) }}</h4>
                         <small class="text-muted">Ingresos</small>
                     </div>
                 </div>
