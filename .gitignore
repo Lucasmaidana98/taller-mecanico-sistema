@@ -22,3 +22,15 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Test files and logs (to prevent future uploads)
+*test*.php
+*debug*.php
+*cookies*.txt
+*test*.json
+*test*.md
+*comprehensive*.php
+*analysis*.php
+*report*.php
+*verification*.php
+*assessment*.php
