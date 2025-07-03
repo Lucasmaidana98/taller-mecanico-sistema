@@ -13,13 +13,13 @@ Sistema web completo para la administración de talleres mecánicos desarrollado
 
 ```
 📁 Archivo: sistemarepuestoslaravel.mp4
-📏 Tamaño: 188MB
-📍 Ubicación: Disponible bajo solicitud
+📏 Tamaño: 4.8MB (comprimido)
+📍 Ubicación: Incluido en este repositorio
 ```
 
-> ⚠️ **Nota**: El video no está incluido en este repositorio debido a las limitaciones de tamaño de GitHub (máx. 100MB).
+> ✅ **Video disponible**: El video de demostración está incluido en el repositorio para descarga directa.
 > 
-> 📧 **Para obtener el video**: Contacta al desarrollador o revisa la carpeta original del proyecto.
+> 🎬 **Ver video**: [Descargar sistemarepuestoslaravel.mp4](./sistemarepuestoslaravel.mp4)
 
 ### 🎬 **Contenido del Video de Demostración:**
 
@@ -31,7 +31,7 @@ Sistema web completo para la administración de talleres mecánicos desarrollado
 | ⚙️ **Gestión de Servicios** | Catálogo de servicios, precios, disponibilidad |
 | 👨‍🔧 **Gestión de Empleados** | Roles, permisos, información laboral |
 | 📋 **Órdenes de Trabajo** | Estados, asignaciones, cálculos automáticos |
-| 📊 **Reportes PDF** | Generación dinámica, exportación |
+| 📊 **Reportes** | Sistema de reportes y estadísticas |
 | 🔐 **Sistema de Roles** | Autenticación, permisos granulares |
 | 💻 **UI/UX Moderna** | Bootstrap 5, responsive design, SweetAlert2 |
 | ✅ **Validaciones** | Tiempo real, manejo de errores, feedback |
@@ -84,7 +84,7 @@ Sistema web completo para la administración de talleres mecánicos desarrollado
 - Seguimiento de fechas de inicio y finalización
 
 #### 6. **📈 Reportes y Estadísticas**
-- Reportes en PDF con **DomPDF**
+- Sistema de reportes avanzado
 - Estadísticas de ventas y servicios
 - Reportes por período de tiempo
 - Análisis de rendimiento del taller
@@ -96,7 +96,7 @@ Sistema web completo para la administración de talleres mecánicos desarrollado
 - **PHP 8.3+** - Lenguaje de programación
 - **MySQL** - Base de datos relacional
 - **Spatie Laravel Permission** - Sistema de roles y permisos
-- **DomPDF** - Generación de reportes PDF
+- **DomPDF** - Generación de reportes
 
 ### **Frontend**
 - **Bootstrap 5.3** - Framework CSS responsive

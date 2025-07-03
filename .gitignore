@@ -35,8 +35,7 @@ Thumbs.db
 *verification*.php
 *assessment*.php
 
-# Large video files
-*.mp4
+# Large video files (exclude compressed demo video)
 *.avi
 *.mov
 *.mkv
