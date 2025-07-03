@@ -9,20 +9,32 @@ Sistema web completo para la administración de talleres mecánicos desarrollado
 
 ## 🎥 Demostración en Video
 
-> **📹 Video disponible**: `sistemarepuestoslaravel.mp4` (188MB)
-> 
-> *Debido al tamaño del archivo, el video no está incluido en el repositorio. Puedes encontrarlo en la carpeta original del proyecto o solicitar acceso al desarrollador.*
+### 📺 **Video Demostrativo Completo**
 
-### 📹 **Lo que verás en el video de demostración:**
-- ✅ **Dashboard interactivo** con estadísticas en tiempo real
-- ✅ **Gestión completa** de clientes, vehículos y servicios  
-- ✅ **Sistema de roles y permisos** en acción
-- ✅ **Operaciones CRUD** con validaciones avanzadas
-- ✅ **Interfaz responsive** y moderna con Bootstrap 5
-- ✅ **Eliminación segura** con confirmaciones SweetAlert2
-- ✅ **Generación de reportes** en PDF
-- ✅ **Autenticación y navegación** entre módulos
-- ✅ **Validaciones en tiempo real** y manejo de errores
+```
+📁 Archivo: sistemarepuestoslaravel.mp4
+📏 Tamaño: 188MB
+📍 Ubicación: Disponible bajo solicitud
+```
+
+> ⚠️ **Nota**: El video no está incluido en este repositorio debido a las limitaciones de tamaño de GitHub (máx. 100MB).
+> 
+> 📧 **Para obtener el video**: Contacta al desarrollador o revisa la carpeta original del proyecto.
+
+### 🎬 **Contenido del Video de Demostración:**
+
+| Funcionalidad | Descripción |
+|---------------|-------------|
+| 🏠 **Dashboard** | Estadísticas en tiempo real, gráficos interactivos |
+| 👥 **Gestión de Clientes** | CRUD completo, validaciones, búsqueda avanzada |
+| 🚗 **Gestión de Vehículos** | Registro detallado, asociación con clientes |
+| ⚙️ **Gestión de Servicios** | Catálogo de servicios, precios, disponibilidad |
+| 👨‍🔧 **Gestión de Empleados** | Roles, permisos, información laboral |
+| 📋 **Órdenes de Trabajo** | Estados, asignaciones, cálculos automáticos |
+| 📊 **Reportes PDF** | Generación dinámica, exportación |
+| 🔐 **Sistema de Roles** | Autenticación, permisos granulares |
+| 💻 **UI/UX Moderna** | Bootstrap 5, responsive design, SweetAlert2 |
+| ✅ **Validaciones** | Tiempo real, manejo de errores, feedback |
 
 ## 🎯 Características Principales
 
